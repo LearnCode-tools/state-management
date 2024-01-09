@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { URL_HANDLER } from "../../router/urlHandler";
 import "./layout.scss";
 
@@ -16,10 +16,6 @@ export const Layout = ({ children, path, setPath }: Props) => {
     URL_HANDLER[name]();
     setPath(`/${name}`);
   };
-
-  useEffect(() => {
-    console.log("effect");
-  }, [path]);
 
   return (
     <div className="layout">

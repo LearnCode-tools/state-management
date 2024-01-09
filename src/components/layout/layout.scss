@@ -1,5 +1,5 @@
 $mainColor: rgb(113, 186, 255);
-
+$subColor: white;
 .layout {
   transition: 0.2s;
 
@@ -7,6 +7,7 @@ $mainColor: rgb(113, 186, 255);
     color: $mainColor;
     user-select: none;
     &:hover {
+      color: $subColor;
       cursor: pointer;
     }
   }

@@ -1,7 +1,11 @@
+import { store } from "../store/redux/store";
+import { Provider } from "react-redux";
+import { ReduxExample } from "../components/pages/redux";
+
 export const ReduxEX = () => {
   return (
-    <div>
-      <p>redux</p>
-    </div>
+    <Provider store={store}>
+      <ReduxExample />
+    </Provider>
   );
 };
