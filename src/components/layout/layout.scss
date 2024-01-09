@@ -1,0 +1,30 @@
+$mainColor: rgb(113, 186, 255);
+
+.layout {
+  transition: 0.2s;
+
+  & h1 {
+    color: $mainColor;
+    user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  & nav {
+    user-select: none;
+  }
+
+  & li {
+    list-style: none;
+    font-size: 22px;
+    font-weight: bold;
+    &:hover {
+      color: rgb(113, 186, 255);
+      cursor: pointer;
+    }
+  }
+  .selected {
+    color: rgb(113, 186, 255);
+  }
+}
