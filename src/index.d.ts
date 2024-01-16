@@ -11,4 +11,5 @@ export type Issue = {
   id: string;
   name: string;
   content: string;
+  [key: string]: string;
 };

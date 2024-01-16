@@ -1,7 +1,18 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryExample } from "../components/pages/reactQuery";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
+
 export const ReactQueryEX = () => {
   return (
-    <div>
-      <p>react query</p>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryExample />
+    </QueryClientProvider>
   );
 };
