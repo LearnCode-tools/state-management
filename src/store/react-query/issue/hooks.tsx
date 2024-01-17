@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
-import { issue_API } from "../../api/issueAPI";
-import type { Issue } from "../..";
+import { issue_API } from "../../../api/issueAPI";
+import type { Issue } from "../../..";
 
 export const ISSUES = "issues";
 

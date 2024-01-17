@@ -1,4 +1,4 @@
-import "./redux.scss";
+import "../style.scss";
 import { useEffect } from "react";
 import { useAppDispatch } from "../../../store/redux/hooks";
 import { getAllIssue } from "../../../store/redux/slice/issue";

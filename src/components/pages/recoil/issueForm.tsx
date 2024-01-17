@@ -1,22 +1,27 @@
 import type { FormEvent, CreateIssue } from "../../..";
-import { useMutationIssue } from "../../../store/react-query/issue/hooks";
+import { useSetRecoilState } from "recoil";
+import { issueCreateSelector } from "../../../store/recoil/issue/atom";
+import { issue_API } from "../../../api/issueAPI";
 
 export const IssueForm = () => {
-  const createMutation = useMutationIssue();
+  const createIssue = useSetRecoilState(issueCreateSelector);
 
-  const onSubmitHandler = (e: FormEvent) => {
+  const onSubmitHandler = async (e: FormEvent) => {
     e.preventDefault();
     const target = e.target;
     const name = target[0].value;
     const content = target[1].value;
 
-    const data: CreateIssue = {
+    const issue: CreateIssue = {
       name,
       content,
     };
     target[0].value = "";
     target[1].value = "";
-    createMutation.mutate(data); // id 값은 mock server가 자동 생성
+
+    // possible try / catch
+    const { data } = await issue_API.createIssue(issue);
+    createIssue(data);
   };
 
   return (

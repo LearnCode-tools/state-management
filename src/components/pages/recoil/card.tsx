@@ -1,36 +1,44 @@
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import {
+  issueUpdateSelector,
+  issueDeleteSelector,
+} from "../../../store/recoil/issue/atom";
+import { issue_API } from "../../../api/issueAPI";
 import type { Issue, FormEvent } from "../../..";
-import { useMutationIssue } from "../../../store/react-query/issue/hooks";
 
 interface Props {
   issue: Issue;
 }
 
 export const Card = ({ issue: { id, name, content } }: Props) => {
-  const updateMutation = useMutationIssue("update");
-  const deleteMutation = useMutationIssue("delete");
-
+  const updateIssue = useSetRecoilState(issueUpdateSelector);
+  const deleteIssue = useSetRecoilState(issueDeleteSelector);
   const [isEditable, setisEditable] = useState(false);
 
   const onEditorHandler = () => {
     setisEditable(!isEditable);
   };
 
-  const onUpdateHandler = (e: FormEvent) => {
+  const onUpdateHandler = async (e: FormEvent) => {
     e.preventDefault();
 
-    const data = {
+    const updateData = {
       id,
       name,
-      content: e.target[0].value as string,
+      content: e.target[0].value,
     };
-    updateMutation.mutate(data);
+
+    const { data } = await issue_API.updateOne(updateData);
+    updateIssue(data);
+
     setisEditable(false);
   };
 
-  const onDeleteHandler = () => {
+  const onDeleteHandler = async () => {
     if (window.confirm("삭제할까요?")) {
-      deleteMutation.mutate(id);
+      await issue_API.deleteOne(id);
+      deleteIssue(id);
     }
   };
 

@@ -1,5 +1,5 @@
 import { Card } from "./card";
-import { useGetIssues } from "../../../store/react-query/hooks";
+import { useGetIssues } from "../../../store/react-query/issue/hooks";
 
 export const CardBox = () => {
   const { data } = useGetIssues();

@@ -1,11 +1,11 @@
 import "../style.scss";
-import { IssueForm } from "./issueForm";
 import { CardBox } from "./cardBox";
+import { IssueForm } from "./issueForm";
 
-export const ReactQueryExample = () => {
+export const RecoilExample = () => {
   return (
     <div>
-      <h2>reactQuery</h2>
+      <h2>recoil</h2>
       <IssueForm />
       <CardBox />
     </div>
