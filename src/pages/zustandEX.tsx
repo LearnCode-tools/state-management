@@ -1,7 +1,5 @@
+import { ZustandExample } from "../components/pages/zustand";
+
 export const ZustandEX = () => {
-  return (
-    <div>
-      <p>zustand</p>
-    </div>
-  );
+  return <ZustandExample />;
 };
